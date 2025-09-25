@@ -16,3 +16,36 @@ Input contains a series of commands. The keywords BACK, FORWARD, VISIT, and QUIT
 
 Output For each command, print the URL of the current page (in a line) after the command is executed if the command is not ignored. Otherwise, print Ignored
 """
+
+class TwoStack:
+
+    def __init__(self):
+
+        self._fstack = []
+        self._bstack = []
+        self._current = None
+    
+    def back(self):
+        if self._bstack == []:
+            raise 
+        self._fstack.pop
+
+
+    def forward(self):
+        print("forward")
+    def visit(self, link):
+        print("visit")
+    def quit(self):
+        pass
+
+if __name__ == "__main__":
+    
+    ts1 = TwoStack()
+
+    print(--Enter the site that you want to visit--)
+    u_input = input()
+
+    while u_input != "QUIT":
+    
+        
+
