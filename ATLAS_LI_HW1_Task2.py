@@ -9,7 +9,7 @@ You are asked to simulate this feature as a Python console application. The appl
 
 3. VISIT <url>: Push the current page on the top of the backward stack, and make the URL specify the new current page. The forward stack is emptied.
 
-4. QUIT: Quit the application. 
+4. QUIT: Quit the application.
 
 Consider handling any exceptional scenarios (e.g. invalid attempts to go BACK or FORWARD, missing ‘url’ for the visit command, misspelled/invalid commands etc.).
 
@@ -28,7 +28,7 @@ class TwoStack:
         self._fstack: List[str] = []
         self._bstack: List[str] = []
         self._current = None
-    
+
     def back(self) -> Optional[str]:
 
         if self._bstack != []:
@@ -50,7 +50,7 @@ class TwoStack:
             self._current = self._fstack.pop()
 
             print(self._current)
-        
+
         else:
 
             print("Ignored")
@@ -69,18 +69,18 @@ class TwoStack:
 
     def quit(self):
         sys.exit(0)
-    
+
 
 if __name__ == "__main__":
 
     ts1 = TwoStack()
 
-    command_list = dict({"FOWARD": ts1.forward, "BACKWARD": ts1.back, "VISIT": ts1.visit, "QUIT": ts1.quit})
+    command_list = dict({"FORWARD": ts1.forward, "BACK": ts1.back, "VISIT": ts1.visit, "QUIT": ts1.quit})
 
     print("--Enter the site that you want to visit--")
 
     while True:
-        
+
         command = None
         arg = None
 
@@ -102,7 +102,7 @@ if __name__ == "__main__":
 
             print("--Please print a valid command--")
             continue
-            
+
         if arg is not None:
             func(arg)
         else:
