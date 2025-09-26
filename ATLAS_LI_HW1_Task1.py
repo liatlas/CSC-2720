@@ -13,23 +13,25 @@ Sample Input: [2, 1, 4, 3]
 Sample Output: [4, 4, -1, -1]
 """
 
+from typing import List
 
-def next_greater_element(x):
+def next_greater_element(x: List[int]) -> List[int]:
 
     n = len(x)
     res = [-1] * n
 
     # array acting as stack as we will only be changing the value at the end of the array
-    stack = []
+    stack: List[int] = []
 
     for i in range(n - 1, -1, -1):
 
         # remove values less than the current value from the stack
-        while stack and stack[-1] < x[i]:
+        while stack and stack[-1] <= x[i]:
 
             stack.pop()
 
-        # adds the top value of the stack to the stack, only if there is a stack because of the first iteration of the loop
+        # adds the top value of the stack to the stack, only if there is a
+        # stack because of the first iteration of the loop
         if stack:
 
             res[i] = stack[-1]
@@ -44,101 +46,21 @@ if __name__ == "__main__":
 
     arr1 = [2, 1, 4, 3]
 
+    # output [4, 4, -1, -1]
     print(next_greater_element(arr1))
 
-    # output [4, 4, -1, -1]
+    arr2 = [1, 5, 0, 2]
 
-    """
+    # output [5, -1, 2, -1]
+    print(next_greater_element(arr2))
 
-    brute force method O(n^2):
+    arr3 = [0, 0, 0, 4]
 
-        iterate through each element in the array
-        iterate all subsequent values
-        appending the greatest value to the result array
+    # output [4, 4, 4, -1]
+    print(next_greater_element(arr3))
 
-    problems:
+    arr4 = [1, 0, 0, 0]
 
-        each value is seen multiple times
-        i want to iterate through the array once
-        while already knowing the future elements
+    # output [-1, -1, -1, -1]
+    print(next_greater_element(arr4))
 
-    solution: iterate from right to left instead
-
-
-    n = len(x)
-
-    res = [-1] * n
-
-    for i in range(n):
-
-        j = i
-
-        while j < n:
-
-            if x[j] > x[i]:
-
-                res[i] = x[j]
-                break
-
-            j += 1
-
-    return res
-
-    """
-
-    """
-
-    right to left method O(n):
-
-        iterate through the array from right to left
-
-            if its the last value of the array value
-
-                set the index to -1
-
-            if not
-
-                update a max variable and max index variable each time there is a new max
-
-            iterate through the result array and change it to match the max
-
-        Problem:
-
-            index is not necesarily needed
-
-            while still O(n), the two for loops can probably be simplified
-
-        Next I will try to implement a stack
-
-
-    n = len(x)
-
-    res = [-1] * n
-
-    for i in range(n - 1, -1, -1):
-
-        if i == n - 1:
-
-            max_element = x[i]
-            max_index = i
-
-        elif x[i] > max_element:
-
-            max_element = x[i]
-            max_index = i
-
-    for j in range(max_index):
-
-        if j != max_index:
-
-            res[j] = max_element
-
-    return res
-
-    """
-
-    """
-    stack implementation of next greatest element
-
-
-    """
