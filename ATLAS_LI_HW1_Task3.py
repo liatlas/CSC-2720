@@ -50,7 +50,6 @@ class CircularLinkedList:
         return self.size
 
     def insert(self, item):
-
         """
         This will be used to add values to the list as well as the order in which they are added is always non-ascending
 
@@ -77,11 +76,11 @@ class CircularLinkedList:
 
         while True:
 
-            if current.value <= item <= current.next.value: # check 1
+            if current.value <= item <= current.next.value:  # check 1
 
                 break
 
-            if current.value > current.next.value: #check 2
+            if current.value > current.next.value:  # check 2
 
                 if item >= current.value or item <= current.next.value:
 
@@ -89,14 +88,15 @@ class CircularLinkedList:
 
             current = current.next
 
-            if current == self.tail: #check 3
+            if current == self.tail:  # check 3
 
                 break
 
         new_node.next = current.next
         current.next = new_node
 
-        if current == self.tail: # When inserted at the end of the list, the tail of the list does not move and should be shift over
+        # When inserted at the end of the list, the tail of the list does not move and should be shift over
+        if current == self.tail:
 
             self.tail = new_node
 
