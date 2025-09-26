@@ -18,8 +18,10 @@ Input contains a series of commands. The keywords BACK, FORWARD, VISIT, and QUIT
 
 Output For each command, print the URL of the current page (in a line) after the command is executed if the command is not ignored. Otherwise, print Ignored
 """
+
 import sys
 from typing import Optional, List
+
 
 class TwoStack:
 
@@ -34,7 +36,7 @@ class TwoStack:
         if self._bstack != []:
 
             self._fstack.append(self._current)
-            self._current  = self._bstack.pop()
+            self._current = self._bstack.pop()
 
             print(self._current)
 
@@ -55,7 +57,6 @@ class TwoStack:
 
             print("Ignored")
 
-
     def visit(self, link: str) -> str:
 
         self._bstack.append(self._current)
@@ -75,7 +76,9 @@ if __name__ == "__main__":
 
     ts1 = TwoStack()
 
-    command_list = dict({"FORWARD": ts1.forward, "BACK": ts1.back, "VISIT": ts1.visit, "QUIT": ts1.quit})
+    command_list = dict(
+        {"FORWARD": ts1.forward, "BACK": ts1.back, "VISIT": ts1.visit, "QUIT": ts1.quit}
+    )
 
     print("--Enter the site that you want to visit--")
 
@@ -84,17 +87,19 @@ if __name__ == "__main__":
         command = None
         arg = None
 
-        i = input().strip().split(maxsplit = 1)
+        i = input().strip().split(maxsplit=1)
 
         command = str(i[0]) if i else None
         arg = i[1] if len(i) > 1 else None
 
         if arg and not (len(arg) < 50 and " " not in arg):
 
-            print("--Please print a valid command - url cannot contain spaces or be greater than 50 characters--")
+            print(
+                "--Please print a valid command - url cannot contain spaces or be greater than 50 characters--"
+            )
             continue
 
-        if command in command_list.keys():
+        if command in command_list:
 
             func = command_list[command]
 
