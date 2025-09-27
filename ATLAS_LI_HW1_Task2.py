@@ -1,29 +1,13 @@
 """
-Problem 2: Standard web browsers contain features to move backward and forward among the pages recently visited. One way to implement these features is to use two stacks to keep track of the pages that can be reached by moving backward and forward.
-
-You are asked to simulate this feature as a Python console application. The application should accept the following commands:
-
-1. BACK: If the backward stack is empty, the command is ignored. Otherwise, push the current page on the top of the forward stack. Pop the page from the top of the backward stack, making it the new current page.
-
-2. FORWARD: If the forward stack is empty, the command is ignored. Otherwise, push the current page on the top of the backward stack. Pop the page from the top of the forward stack, making it the new current page.
-
-3. VISIT <url>: Push the current page on the top of the backward stack, and make the URL specify the new current page. The forward stack is emptied.
-
-4. QUIT: Quit the application.
-
-Consider handling any exceptional scenarios (e.g. invalid attempts to go BACK or FORWARD, missing ‘url’ for the visit command, misspelled/invalid commands etc.).
-
-Input
-Input contains a series of commands. The keywords BACK, FORWARD, VISIT, and QUIT are all in uppercase. URLs have no whitespace and have at most 50 characters. The end of input is indicated by the QUIT command and the application should terminate when this command is received.
-
-Output For each command, print the URL of the current page (in a line) after the command is executed if the command is not ignored. Otherwise, print Ignored
+Problem 2: recently visited funcionalty using two stacks
 """
-
-import sys
 from typing import Optional, List
 
 
 class TwoStack:
+    """
+    use two stacks to keep track of the pages that can be reached by moving backward and forward
+    """
 
     def __init__(self):
 
@@ -32,8 +16,13 @@ class TwoStack:
         self._current = None
 
     def back(self) -> Optional[str]:
+        """
+        If the backward stack is empty, the command is ignored.
+        Otherwise, push the current page on the top of the forward stack.
+        Pop the page from the top of the backward stack, making it the new current page
+        """
 
-        if self._bstack != []:
+        if self._bstack:
 
             self._fstack.append(self._current)
             self._current = self._bstack.pop()
@@ -45,8 +34,13 @@ class TwoStack:
             print("Ignored")
 
     def forward(self) -> Optional[str]:
+        """
+        If the forward stack is empty, the command is ignored.
+        Otherwise, push the current page on the top of the backward stack.
+        Pop the page from the top of the forward stack, making it the new current page
+        """
 
-        if self._fstack != []:
+        if self._fstack:
 
             self._bstack.append(self._current)
             self._current = self._fstack.pop()
@@ -58,6 +52,10 @@ class TwoStack:
             print("Ignored")
 
     def visit(self, link: str) -> str:
+        """
+        Push the current page on the top of the backward stack, and
+        make the URL specify the new current page. The forward stack is emptied
+        """
 
         self._bstack.append(self._current)
         self._current = link
@@ -69,36 +67,57 @@ class TwoStack:
         print(self._current)
 
     def quit(self):
+        """
+        Quit the application
+        """
         sys.exit(0)
 
-
-if __name__ == "__main__":
+def main():
+    """
+    1. cleans input and splits it for the url
+    2. create command and arg
+    3. checks if arg is valid, else print error and reloop
+    4. checks if command is valid
+    5. if arg exists use it in the function, else use the function without it
+    """
 
     ts1 = TwoStack()
 
+    # valid commands, since there is only one stack (eg. one browser tab)
+    # the output can directly be the command of the tstack
     command_list = dict(
         {"FORWARD": ts1.forward, "BACK": ts1.back, "VISIT": ts1.visit, "QUIT": ts1.quit}
     )
 
     print("--Enter the site that you want to visit--")
 
+
     while True:
 
         command = None
         arg = None
 
+        # strip removes leading and trailing spaces
+        # split(maxsplit = 1) splits the string an array of two elements
+        # (by default split by space)
         i = input().strip().split(maxsplit=1)
 
+        # else None is not really necessary for setting command variable
+        # but it will be kept nonetheless
         command = str(i[0]) if i else None
         arg = i[1] if len(i) > 1 else None
 
+        # check that the length of arg is less than 50 and does not contain
+        # whitespaces
+        # as defined by the instructions
         if arg and not (len(arg) < 50 and " " not in arg):
 
             print(
-                "--Please print a valid command - url cannot contain spaces or be greater than 50 characters--"
+                "--Url cannot contain spaces or be greater than 50 characters--"
             )
             continue
 
+        # call method
         if command in command_list:
 
             func = command_list[command]
@@ -112,3 +131,8 @@ if __name__ == "__main__":
             func(arg)
         else:
             func()
+
+
+
+if __name__ == "__main__":
+    main()
