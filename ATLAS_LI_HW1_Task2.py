@@ -1,6 +1,7 @@
 """
 Problem 2: recently visited funcionalty using two stacks
 """
+import sys
 from typing import Optional, List
 
 
