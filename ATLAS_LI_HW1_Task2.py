@@ -73,6 +73,7 @@ class TwoStack:
         """
         sys.exit(0)
 
+
 def main():
     """
     1. cleans input and splits it for the url
@@ -87,11 +88,11 @@ def main():
     # valid commands, since there is only one stack (eg. one browser tab)
     # the output can directly be the command of the tstack
     command_list = dict(
-        {"FORWARD": ts1.forward, "BACK": ts1.back, "VISIT": ts1.visit, "QUIT": ts1.quit}
+        {"FORWARD": ts1.forward, "BACK": ts1.back,
+            "VISIT": ts1.visit, "QUIT": ts1.quit}
     )
 
     print("--Enter the site that you want to visit--")
-
 
     while True:
 
@@ -132,7 +133,6 @@ def main():
             func(arg)
         else:
             func()
-
 
 
 if __name__ == "__main__":

@@ -139,7 +139,8 @@ class CircularLinkedList:
 
         while True:
 
-            print(f"Process {cur.pid}: Remaining Burst Time = {cur.burst_time}")
+            print(
+                f"Process {cur.pid}: Remaining Burst Time = {cur.burst_time}")
 
             if cur is self.tail:
 
@@ -169,7 +170,8 @@ class CircularLinkedList:
             current.burst_time -= run_time
 
             print(f"Time: {total_time}, Processing PID: {current.pid}")
-            print(f"Process {current.pid} now has {current.burst_time} units remaining.")
+            print(
+                f"Process {current.pid} now has {current.burst_time} units remaining.")
 
             total_time += run_time
 
@@ -191,7 +193,6 @@ class CircularLinkedList:
 
                 self.tail = current
                 current = next_node
-
 
 
 def main():

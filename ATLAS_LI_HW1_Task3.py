@@ -22,7 +22,7 @@ Sample Output: [3,4,1,2
 
 class Node:
 
-    def __init__(self, value: int = None, next = None):
+    def __init__(self, value: int = None, next=None):
 
         self.value = value
         self.next = next

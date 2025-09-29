@@ -15,6 +15,7 @@ Sample Output: [4, 4, -1, -1]
 
 from typing import List
 
+
 def next_greater_element(x: List[int]) -> List[int]:
     """
     From right to left add itms from list x to the stack
@@ -43,7 +44,7 @@ def next_greater_element(x: List[int]) -> List[int]:
 
             res[i] = stack[-1]
 
-        #appends the current value to the stack
+        # appends the current value to the stack
         stack.append(x[i])
 
     return res
