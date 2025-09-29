@@ -14,7 +14,7 @@ class TwoStack:
 
         self._fstack: List[str] = []
         self._bstack: List[str] = []
-        self._current = None
+        self._current = "None"
 
     def back(self) -> Optional[str]:
         """

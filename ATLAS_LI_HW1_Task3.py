@@ -22,7 +22,7 @@ Sample Output: [3,4,1,2
 
 class Node:
 
-    def __init__(self, value=None, next=None):
+    def __init__(self, value: int = None, next = None):
 
         self.value = value
         self.next = next
@@ -49,7 +49,7 @@ class CircularLinkedList:
 
         return self.size
 
-    def insert(self, item):
+    def insert(self, item: int):
         """
         This will be used to add values to the list as well as the order in which they are added is always non-ascending
 
