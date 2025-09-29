@@ -16,6 +16,13 @@ Sample Output: [4, 4, -1, -1]
 from typing import List
 
 def next_greater_element(x: List[int]) -> List[int]:
+    """
+    From right to left add itms from list x to the stack
+
+    on every loop, pop from the stack until the top value is less than x[i] 
+
+    after the while loop if the stack is not empty, add that value to the results list
+    """
 
     n = len(x)
     res = [-1] * n
@@ -63,4 +70,3 @@ if __name__ == "__main__":
 
     # output [-1, -1, -1, -1]
     print(next_greater_element(arr4))
-
