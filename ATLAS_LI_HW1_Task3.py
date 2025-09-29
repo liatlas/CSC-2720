@@ -32,7 +32,8 @@ class CircularLinkedList:
     """
     what is a circular linked list?
     a list where the tail points to the head,
-    however the head is not acutally needed as the head will always just be the next value of the tail
+    however the head is not acutally needed as the
+    head will always just be the next value of the tail
     """
 
     def __init__(self):
@@ -51,7 +52,8 @@ class CircularLinkedList:
 
     def insert(self, item: int):
         """
-        This will be used to add values to the list as well as the order in which they are added is always non-ascending
+        This will be used to add values to the list
+        as well as the order in which they are added is always non-ascending
 
         if the list is not empty
         there will be a series of checks performed while iterating through the list
@@ -95,7 +97,8 @@ class CircularLinkedList:
         new_node.next = current.next
         current.next = new_node
 
-        # When inserted at the end of the list, the tail of the list does not move and should be shift over
+        # When inserted at the end of the list,
+        # the tail of the list does not move and should be shift over
         if current == self.tail:
 
             self.tail = new_node
@@ -112,7 +115,7 @@ class CircularLinkedList:
 
             current = self.tail.next
 
-            for i in range(self.size):
+            for _ in range(self.size):
 
                 print(current.value)
 
